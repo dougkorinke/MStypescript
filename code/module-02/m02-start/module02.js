@@ -26,7 +26,7 @@ else {
 var x;
 var y;
 var a;
-x = 'five';
+x = 5;
 y = 7;
 a = x + y;
 console.log(a);
@@ -35,27 +35,34 @@ console.log(a);
    the constants "Fall", "Winter", "Spring", and "Summer". Then, update the function so
    you can pass in the season by referencing an item in the enum, for example
    Season.Fall, instead of the literal string "Fall". */
+var Season;
+(function (Season) {
+    Season[Season["Spring"] = 0] = "Spring";
+    Season[Season["Summer"] = 1] = "Summer";
+    Season[Season["Fall"] = 2] = "Fall";
+    Season[Season["Winter"] = 3] = "Winter";
+})(Season || (Season = {}));
 function whichMonths(season) {
     var monthsInSeason;
     switch (season) {
-        case "Fall":
+        case Season.Fall:
             monthsInSeason = "September to November";
             break;
-        case "Winter":
+        case Season.Winter:
             monthsInSeason = "December to February";
             break;
-        case "Spring":
+        case Season.Spring:
             monthsInSeason = "March to May";
             break;
-        case "Summer":
+        case Season.Summer:
             monthsInSeason = "June to August";
     }
     return monthsInSeason;
 }
-console.log(whichMonths("Fall"));
+console.log(whichMonths(Season.Spring));
 /* EXERCISE 4
    TODO: Declare the array as the type to match the type of the items in the array. */
-var randomNumbers;
+var randomNumbers = [];
 var nextNumber;
 for (var i = 0; i < 10; i++) {
     nextNumber = Math.floor(Math.random() * (100 - 1)) + 1;
